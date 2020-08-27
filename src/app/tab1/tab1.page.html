@@ -9,9 +9,20 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">List People</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-list>
+    <ion-item *ngFor ="let p of people.data">
+      <ion-avatar slot="start">
+        <img src={{p.avatar}}>
+      </ion-avatar>
+      <ion-label >
+        <h2>{{p.first_name}} {{p.last_name}}</h2>
+        <h3>{{p.email}}</h3>
+        <p>{{p.company}}</p>
+      </ion-label>
+      <ion-button color="primary" (click)="detailpeople(p)">Detail</ion-button>
+    </ion-item>
+  </ion-list>
 </ion-content>
